@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Croft Web Studio — Bespoke Websites for Established Trades</title>
+  <meta name="description" content="Independent web design studio building fast, mobile-first websites for established trades and local service companies across the UK, US, Canada, Australia, and Ireland.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230C0D0F'/%3E%3Cpath d='M42 21.5A13 13 0 1 0 42 42.5' fill='none' stroke='%23F3F0E8' stroke-width='6.5' stroke-linecap='square'/%3E%3Crect x='43' y='13' width='8' height='8' fill='%23C8A96E'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #0c0d0f;
+      --bg-elev: #121418;
+      --bg-panel: #16191e;
+      --ink: #f3f0e8;
+      --ink-dim: #a09d94;
+      --ink-faint: #68665f;
+      --line: rgba(243, 240, 232, 0.11);
+      --line-strong: rgba(243, 240, 232, 0.24);
+      --brass: #c8a96e;
+      --brass-soft: rgba(200, 169, 110, 0.14);
+      --ok: #3ca374;
+      --warn: #d96b52;
+      --sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--bg); color: var(--ink); }
+    body {
+      font-family: var(--sans);
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Subtle architectural paper grain */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 99;
+      opacity: 0.032;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+    }
+
+    /* TOP ARCHITECTURAL BAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(12, 13, 15, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-bar {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+    }
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 650;
+      font-size: 0.98rem;
+      letter-spacing: -0.01em;
+    }
+    .mark-box {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--line-strong);
+      background: var(--bg-elev);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+    .mark-box::after {
+      content: "";
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 4px;
+      height: 4px;
+      background: var(--brass);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 0.86rem;
+    }
+    .nav-links a {
+      color: var(--ink-dim);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      color: var(--ink) !important;
+      padding: 8px 15px;
+      border: 1px solid var(--line-strong);
+      background: var(--bg-elev);
+      font-weight: 500;
+      transition: border-color 0.15s, background 0.15s !important;
+    }
+    .nav-cta:hover {
+      border-color: var(--brass) !important;
+      background: #191c22;
+    }
+    @media (max-width: 760px) {
+      .nav-bar { padding: 15px 20px; }
+      .nav-links a.hide-sm { display: none; }
+    }
+
+    /* HERO EDITORIAL SPLIT */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      border-bottom: 1px solid var(--line);
+    }
+    @media (max-width: 940px) { .hero-grid { grid-template-columns: 1fr; } }
+
+    .hero-left {
+      padding: 76px 48px 72px;
+      border-right: 1px solid var(--line);
+    }
+    @media (max-width: 940px) {
+      .hero-left { border-right: none; border-bottom: 1px solid var(--line); padding: 48px 24px; }
+    }
+
+    .index-tag {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .index-tag::before {
+      content: "";
+      width: 22px;
+      height: 1px;
+      background: var(--brass);
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 4.3vw, 3.55rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin-bottom: 26px;
+    }
+    h1 em {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-style: italic;
+      color: #dfd7c5;
+    }
+
+    .lead-copy {
+      font-size: 1.06rem;
+      color: var(--ink-dim);
+      max-width: 540px;
+      margin-bottom: 36px;
+      line-height: 1.68;
+    }
+
+    .action-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 44px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 22px;
+      background: var(--ink);
+      color: var(--bg);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: -0.01em;
+      border: 1px solid var(--ink);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--ink);
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 18px;
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--line-strong);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .btn-ghost:hover { border-color: var(--brass); }
+
+    .lookup-note {
+      padding: 18px 20px;
+      border-left: 2px solid var(--brass);
+      background: rgba(243, 240, 232, 0.025);
+      font-size: 0.88rem;
+      color: var(--ink-dim);
+      max-width: 540px;
+    }
+    .lookup-note strong { color: var(--ink); font-weight: 600; }
+
+    /* HERO RIGHT: INTERACTIVE ARCHITECTURAL SPECIMEN */
+    .hero-right {
+      padding: 44px 38px;
+      background:
+        linear-gradient(rgba(243, 240, 232, 0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(243, 240, 232, 0.028) 1px, transparent 1px),
+        var(--bg-elev);
+      background-size: 28px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    @media (max-width: 940px) { .hero-right { padding: 36px 24px; } }
+
+    .spec-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .spec-label {
+      font-family: var(--mono);
+      font-size: 0.73rem;
+      color: var(--ink-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .spec-switch {
+      display: inline-flex;
+      border: 1px solid var(--line-strong);
+      background: var(--bg);
+    }
+    .spec-btn {
+      background: transparent;
+      border: none;
+      color: var(--ink-dim);
+      font-family: var(--mono);
+      font-size: 0.73rem;
+      padding: 6px 11px;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .spec-btn.active {
+      background: var(--ink);
+      color: var(--bg);
+      font-weight: 600;
+    }
+
+    /* Simulated Mobile Trade Frame */
+    .device-frame {
+      border: 1px solid var(--line-strong);
+      background: var(--bg);
+      padding: 20px;
+      box-shadow: 0 26px 50px rgba(0, 0, 0, 0.55);
+      transition: border-color 0.25s;
+    }
+    .df-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 13px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+      font-family: var(--mono);
+      font-size: 0.74rem;
+    }
+    .df-status {
+      padding: 2px 8px;
+      font-size: 0.7rem;
+      border: 1px solid currentColor;
+    }
+    .status-good { color: var(--ok); }
+    .status-bad { color: var(--warn); }
+
+    .df-hero-box {
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: var(--bg-panel);
+      margin-bottom: 14px;
+    }
+    .df-kicker {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--brass);
+      margin-bottom: 6px;
+    }
+    .df-title {
+      font-size: 1.08rem;
+      font-weight: 650;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .df-sub {
+      font-size: 0.8rem;
+      color: var(--ink-dim);
+      margin-bottom: 14px;
+    }
+    .df-cta-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .df-pill-solid {
+      text-align: center;
+      padding: 8px 10px;
+      background: var(--brass);
+      color: #0c0d0f;
+      font-weight: 700;
+      font-size: 0.76rem;
+    }
+    .df-pill-line {
+      text-align: center;
+      padding: 8px 10px;
+      border: 1px solid var(--line-strong);
+      color: var(--ink);
+      font-size: 0.76rem;
+    }
+    .df-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .df-metric {
+      border: 1px solid var(--line);
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.015);
+    }
+    .df-metric span {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--ink-faint);
+      margin-bottom: 2px;
+    }
+    .df-metric strong {
+      font-family: var(--mono);
+      font-size: 0.84rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .spec-caption {
+      margin-top: 16px;
+      font-size: 0.8rem;
+      color: var(--ink-faint);
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+    }
+
+    /* FOUR PILLARS STRIP */
+    .strip-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--line);
+    }
+    @media (max-width: 900px) { .strip-4 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { .strip-4 { grid-template-columns: 1fr; } }
+    .strip-cell {
+      padding: 30px 32px;
+      border-right: 1px solid var(--line);
+    }
+    .strip-cell:last-child { border-right: none; }
+    @media (max-width: 900px) {
+      .strip-cell:nth-child(2) { border-right: none; }
+      .strip-cell:nth-child(1), .strip-cell:nth-child(2) { border-bottom: 1px solid var(--line); }
+    }
+    @media (max-width: 540px) {
+      .strip-cell { border-right: none !important; border-bottom: 1px solid var(--line); }
+      .strip-cell:last-child { border-bottom: none; }
+    }
+    .strip-num {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      color: var(--brass);
+      margin-bottom: 10px;
+    }
+    .strip-cell h3 {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+    .strip-cell p {
+      font-size: 0.86rem;
+      color: var(--ink-dim);
+      line-height: 1.55;
+    }
+
+    /* SECTION LAYOUT */
+    .sec-block {
+      padding: 76px 48px;
+      border-bottom: 1px solid var(--line);
+    }
+    @media (max-width: 760px) { .sec-block { padding: 48px 24px; } }
+
+    .sec-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+    .sec-head h2 {
+      font-size: clamp(1.65rem, 3vw, 2.35rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      max-width: 560px;
+    }
+    .sec-head h2 em {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-style: italic;
+      color: #dfd7c5;
+    }
+    .sec-head p {
+      color: var(--ink-dim);
+      max-width: 400px;
+      font-size: 0.93rem;
+    }
+
+    /* PROCESS LEDGER */
+    .process-rows {
+      border-top: 1px solid var(--line);
+    }
+    .proc-row {
+      display: grid;
+      grid-template-columns: 90px 1fr 1.3fr;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+    @media (max-width: 760px) {
+      .proc-row { grid-template-columns: 1fr; gap: 8px; padding: 22px 0; }
+    }
+    .proc-idx {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--brass);
+    }
+    .proc-title {
+      font-size: 1.12rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+    }
+    .proc-desc {
+      font-size: 0.93rem;
+      color: var(--ink-dim);
+    }
+
+    /* SECTORS */
+    .sector-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+    @media (max-width: 860px) { .sector-grid { grid-template-columns: 1fr; } }
+    .sector-card {
+      padding: 30px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.01);
+    }
+    .sector-card span {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--ink-faint);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .sector-card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .sector-card p {
+      font-size: 0.88rem;
+      color: var(--ink-dim);
+    }
+
+    /* TRANSPARENT FEE SCHEDULE */
+    .cur-bar {
+      display: inline-flex;
+      flex-wrap: wrap;
+      border: 1px solid var(--line-strong);
+      background: var(--bg-elev);
+    }
+    .cur-btn {
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--line);
+      color: var(--ink-dim);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      padding: 8px 14px;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .cur-btn:last-child { border-right: none; }
+    .cur-btn.active {
+      background: var(--ink);
+      color: var(--bg);
+      font-weight: 600;
+    }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line-strong);
+    }
+    @media (max-width: 920px) { .price-grid { grid-template-columns: 1fr; } }
+    .price-col {
+      padding: 36px 32px;
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--bg-elev);
+    }
+    .price-col:last-child { border-right: none; }
+    @media (max-width: 920px) {
+      .price-col { border-right: none; border-bottom: 1px solid var(--line); }
+      .price-col:last-child { border-bottom: none; }
+    }
+    .price-col.featured {
+      background: linear-gradient(180deg, #17191f 0%, #111317 100%);
+      position: relative;
+    }
+    .price-col.featured::before {
+      content: "MOST COMMISSIONED";
+      position: absolute;
+      top: 0;
+      right: 24px;
+      background: var(--brass);
+      color: #0c0d0f;
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      padding: 4px 9px;
+    }
+    .tier-name {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--brass);
+      margin-bottom: 12px;
+    }
+    .tier-val {
+      font-size: 2.5rem;
+      font-weight: 650;
+      letter-spacing: -0.035em;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .tier-term {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      color: var(--ink-faint);
+      margin-bottom: 22px;
+    }
+    .tier-list {
+      list-style: none;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      margin-bottom: 26px;
+    }
+    .tier-list li {
+      font-size: 0.88rem;
+      color: var(--ink-dim);
+      padding: 6px 0;
+      display: flex;
+      gap: 10px;
+    }
+    .tier-list li::before {
+      content: "+";
+      font-family: var(--mono);
+      color: var(--brass);
+      flex-shrink: 0;
+    }
+
+    /* FAQ ACCORDION */
+    .faq-list { border-top: 1px solid var(--line); }
+    details.faq-item {
+      border-bottom: 1px solid var(--line);
+      padding: 20px 0;
+    }
+    details.faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      font-size: 1.02rem;
+      font-weight: 550;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary::after {
+      content: "+";
+      font-family: var(--mono);
+      font-size: 1.1rem;
+      color: var(--brass);
+    }
+    details[open].faq-item summary::after { content: "−"; }
+    details.faq-item p {
+      margin-top: 12px;
+      color: var(--ink-dim);
+      font-size: 0.92rem;
+      max-width: 760px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 46px 48px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.84rem;
+      color: var(--ink-faint);
+    }
+    @media (max-width: 760px) { footer { padding: 34px 24px; } }
+    .foot-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .foot-links button, .foot-links a {
+      background: none;
+      border: none;
+      color: var(--ink-dim);
+      font: inherit;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .foot-links button:hover, .foot-links a:hover { color: var(--ink); }
+
+    /* LEGAL & PRIVACY DRAWER MODAL */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      background: rgba(0, 0, 0, 0.76);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-sheet {
+      background: var(--bg-elev);
+      border: 1px solid var(--line-strong);
+      max-width: 780px;
+      width: 100%;
+      max-height: 86vh;
+      overflow-y: auto;
+      padding: 36px;
+      position: relative;
+    }
+    .modal-close {
+      position: sticky;
+      top: 0;
+      float: right;
+      background: var(--bg);
+      color: var(--ink);
+      border: 1px solid var(--line-strong);
+      padding: 6px 12px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      cursor: pointer;
+    }
+    .modal-sheet h2 { font-size: 1.35rem; margin-bottom: 16px; }
+    .modal-sheet h3 { font-size: 0.98rem; margin: 22px 0 8px; color: var(--brass); font-family: var(--mono); text-transform: uppercase; }
+    .modal-sheet p { font-size: 0.88rem; color: var(--ink-dim); margin-bottom: 10px; }
+    .inq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+    @media (max-width: 600px) { .inq-grid { grid-template-columns: 1fr; } }
+    .inq-input {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--bg);
+      border: 1px solid var(--line-strong);
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.88rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-bar">
+    <a href="#" class="wordmark">
+      <span class="mark-box">C</span>
+      <span>Croft Web Studio</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#process" class="hide-sm">Method</a>
+      <a href="#sectors" class="hide-sm">Sectors</a>
+      <a href="#fees" class="hide-sm">Fee Schedule</a>
+      <a href="#faq" class="hide-sm">FAQ</a>
+      <a href="mailto:dominik@croftwebstudio.com" class="nav-cta">dominik@croftwebstudio.com</a>
+    </nav>
+  </div>
+</header>
+
+<div class="shell">
+  <!-- HERO -->
+  <section class="hero-grid">
+    <div class="hero-left">
+      <div class="index-tag">Independent B2B Web Studio &middot; Est. Europe / UK Focus</div>
+      <h1>Websites built to turn local searches into <em>booked work.</em></h1>
+      <p class="lead-copy">
+        We design and engineer fast, mobile first websites and instant enquiry alert systems for established trades, contractors, and local service companies. Every build is demonstrated first with zero upfront commitment.
+      </p>
+
+      <div class="action-bar">
+        <a href="mailto:dominik@croftwebstudio.com?subject=Website%20Preview%20Enquiry" class="btn-primary">
+          Request a Concept Preview &rarr;
+        </a>
+        <button type="button" class="btn-ghost" id="copyMailBtn" title="Copy studio email">
+          Copy: dominik@croftwebstudio.com
+        </button>
+      </div>
+
+      <div class="lookup-note">
+        <strong>Looking us up after receiving an email from Dominik?</strong> You are in the right place. When we spot an established local firm with strong workmanship whose website breaks on mobile or hides its tap to call button, we build a private working concept beforehand so you can judge the quality before spending a penny.
+      </div>
+    </div>
+
+    <!-- INTERACTIVE SPECIMEN -->
+    <div class="hero-right">
+      <div>
+        <div class="spec-header">
+          <span class="spec-label">Architecture Specimen</span>
+          <div class="spec-switch">
+            <button type="button" class="spec-btn" id="btnLegacy">Legacy Site</button>
+            <button type="button" class="spec-btn active" id="btnCroft">Croft Standard</button>
+          </div>
+        </div>
+
+        <div class="device-frame" id="specFrame">
+          <div class="df-topbar">
+            <span id="dfDomain">mobile-viewport &middot; 390px</span>
+            <span class="df-status status-good" id="dfBadge">SSL + Tap-to-Call Active</span>
+          </div>
+          <div class="df-hero-box">
+            <div class="df-kicker" id="dfKicker">Verified Local Contractor &middot; 5.0 Rated</div>
+            <div class="df-title" id="dfTitle">Resin &amp; Block Paved Driveways Built With a 10 Year Guarantee</div>
+            <div class="df-sub" id="dfSub">Real local project gallery, instant 30 second quote form, and sticky one tap phone header above the fold.</div>
+            <div class="df-cta-row">
+              <div class="df-pill-solid" id="dfCta1">Tap to Call Now</div>
+              <div class="df-pill-line" id="dfCta2">30s Quote Request</div>
+            </div>
+          </div>
+          <div class="df-metrics">
+            <div class="df-metric">
+              <span>First Load</span>
+              <strong id="mSpeed" style="color:var(--ok);">0.7s</strong>
+            </div>
+            <div class="df-metric">
+              <span>Call Access</span>
+              <strong id="mCall">1 Tap Top</strong>
+            </div>
+            <div class="df-metric">
+              <span>Lead Alert</span>
+              <strong id="mAlert">2s Push</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec-caption">
+        <span>01 / CONVERSION ARCHITECTURE</span>
+        <span>NO CALLS &middot; NO RETAINERS REQUIRED</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 PILLARS -->
+  <section class="strip-4">
+    <div class="strip-cell">
+      <div class="strip-num">01</div>
+      <h3>Zero Upfront Risk</h3>
+      <p>Nothing is billed in advance. You inspect your finished production website on your own phone before paying.</p>
+    </div>
+    <div class="strip-cell">
+      <div class="strip-num">02</div>
+      <h3>48 to 72h Turnaround</h3>
+      <p>No drawn out agency meetings or six week waits. Clean written sign off from start to launch.</p>
+    </div>
+    <div class="strip-cell">
+      <div class="strip-num">03</div>
+      <h3>Zero Email Disruption</h3>
+      <p>We connect only web A and CNAME records. Your existing business email inboxes remain 100% untouched.</p>
+    </div>
+    <div class="strip-cell">
+      <div class="strip-num">04</div>
+      <h3>100% True Ownership</h3>
+      <p>Keep full ownership in your own account after launch, or let us handle hosting and updates for you.</p>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="sec-block" id="process">
+    <div class="sec-head">
+      <h2>A calm, written workflow designed for <em>busy owners.</em></h2>
+      <p>Most contractors do not have time for hour long sales calls during working hours. Everything runs asynchronously with clear milestones.</p>
+    </div>
+
+    <div class="process-rows">
+      <div class="proc-row">
+        <div class="proc-idx">STEP 01</div>
+        <div class="proc-title">Private Concept &amp; 2 Minute Brief</div>
+        <div class="proc-desc">After reviewing your initial concept preview, you confirm your preferred pages, quote inbox address, and service areas in a short written setup brief with zero payment due.</div>
+      </div>
+      <div class="proc-row">
+        <div class="proc-idx">STEP 02</div>
+        <div class="proc-title">Production Build in 48 to 72 Hours</div>
+        <div class="proc-desc">We craft your complete mobile and desktop site using your real workmanship photos, accreditations, customer reviews, and direct quote routing on a live staging link.</div>
+      </div>
+      <div class="proc-row">
+        <div class="proc-idx">STEP 03</div>
+        <div class="proc-title">Owner Inspection, Approval &amp; Safe Launch</div>
+        <div class="proc-desc">You test every button on your phone and request any refinements. Payment via Stripe (with automatic VAT/tax PDF invoice) happens only once you approve, right before pointing your domain live.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORS -->
+  <section class="sec-block" id="sectors">
+    <div class="sec-head">
+      <h2>Focused on high trust <em>local trades &amp; specialists.</em></h2>
+      <p>Layouts engineered around proof of workmanship, clear service areas, and immediate mobile quote capture.</p>
+    </div>
+
+    <div class="sector-grid">
+      <div class="sector-card">
+        <span>Exterior &amp; Surfacing</span>
+        <h3>Driveways, Patios &amp; Landscaping</h3>
+        <p>High resolution before and after galleries for resin bound surfacing, block paving, fencing, and garden builds.</p>
+      </div>
+      <div class="sector-card">
+        <span>Roofline &amp; Property</span>
+        <h3>Roofing &amp; Exterior Cleaning</h3>
+        <p>Fast emergency callout headers and trust badge layouts for roofers, rendering specialists, and pressure washing firms.</p>
+      </div>
+      <div class="sector-card">
+        <span>Construction &amp; Technical</span>
+        <h3>Builders, Lofts, Solar &amp; Detailing</h3>
+        <p>Structured multi service architectures for extensions, loft conversions, heating engineers, solar installers, and auto clinics.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPARENT FEES -->
+  <section class="sec-block" id="fees">
+    <div class="sec-head">
+      <div>
+        <div class="index-tag" style="margin-bottom:12px;">Transparent B2B Fee Schedule</div>
+        <h2>Fixed pricing. <em>Paid only on approval.</em></h2>
+      </div>
+      <div class="cur-bar" id="curBar">
+        <button type="button" class="cur-btn active" data-cur="UK">UK (&pound;)</button>
+        <button type="button" class="cur-btn" data-cur="US">USA ($)</button>
+        <button type="button" class="cur-btn" data-cur="CA">CA (CA$)</button>
+        <button type="button" class="cur-btn" data-cur="AU">AU (A$)</button>
+        <button type="button" class="cur-btn" data-cur="IE">IE (&euro;)</button>
+      </div>
+    </div>
+
+    <div class="price-grid">
+      <div class="price-col">
+        <div>
+          <div class="tier-name">Starter Single Page</div>
+          <div class="tier-val" id="valSingle">&pound;350</div>
+          <div class="tier-term">One time build fee &middot; 0 upfront</div>
+          <ul class="tier-list">
+            <li>Bespoke mobile &amp; desktop single page build</li>
+            <li>Real project gallery, reviews &amp; service overview</li>
+            <li>Sticky tap to call header &amp; fast quote form</li>
+            <li>Safe A / CNAME domain connection (emails untouched)</li>
+            <li>Optional Instant Mobile Lead Alerts (<span id="valUpsell">+&pound;149</span>)</li>
+          </ul>
+        </div>
+        <a href="mailto:dominik@croftwebstudio.com?subject=Starter%20Single%20Page%20Enquiry" class="btn-ghost" style="justify-content:center;">Enquire via Email &rarr;</a>
+      </div>
+
+      <div class="price-col featured">
+        <div>
+          <div class="tier-name">Full Multi Page Site</div>
+          <div class="tier-val" id="valMulti">&pound;890</div>
+          <div class="tier-term">One time build fee &middot; 0 upfront</div>
+          <ul class="tier-list">
+            <li>Dedicated subpages for individual services &amp; areas</li>
+            <li>Expanded project showcase, about &amp; contact pages</li>
+            <li>Clean local search structure &amp; fast image delivery</li>
+            <li>Instant Mobile Lead Alert System included free</li>
+            <li>100% ownership transfer or optional Care Plan</li>
+          </ul>
+        </div>
+        <a href="mailto:dominik@croftwebstudio.com?subject=Full%20Multi%20Page%20Website%20Enquiry" class="btn-primary" style="justify-content:center;">Commission Multi Page &rarr;</a>
+      </div>
+
+      <div class="price-col">
+        <div>
+          <div class="tier-name">Managed Care &amp; Hosting</div>
+          <div class="tier-val"><span id="valCare">&pound;59</span><span style="font-size:1.05rem;color:var(--ink-dim);font-weight:400;">/mo</span></div>
+          <div class="tier-term">Optional hands off care &middot; 6 mo initial term</div>
+          <ul class="tier-list">
+            <li>High speed global hosting &amp; managed SSL security</li>
+            <li>Ongoing text &amp; job photo updates whenever needed</li>
+            <li>Instant Mobile Lead Alert System active while subscribed</li>
+            <li>Monthly cancellable after initial 6 month term</li>
+            <li>100% free project ownership transfer guarantee</li>
+          </ul>
+        </div>
+        <a href="mailto:dominik@croftwebstudio.com?subject=Managed%20Care%20Plan%20Question" class="btn-ghost" style="justify-content:center;">Ask About Care Plan &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec-block" id="faq" style="border-bottom:none;">
+    <div class="sec-head" style="margin-bottom:28px;">
+      <h2>Common questions from <em>business owners.</em></h2>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>Why did you build a concept preview for my company before messaging me?</summary>
+        <p>Most tradespeople receive vague cold messages every week promising the world without showing proof. Building a working preview with your real branding lets you evaluate our actual craft on your phone in 30 seconds, with zero pressure and zero sales calls.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Will switching to the new website affect my existing company emails?</summary>
+        <p>No. We never alter root nameservers or touch MX, SPF, or DKIM email records. Only the web A and CNAME records are pointed to the new website, keeping your business email running without interruption.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How does the Instant Mobile Lead Alert System work?</summary>
+        <p>Alongside standard email delivery to your inbox, every quote request submitted on your website triggers an immediate notification to your mobile within two seconds, complete with a one tap callback link so you can reach homeowners before competitors do.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do I own the website outright once paid?</summary>
+        <p>Yes. Every build is strictly B2B with full client ownership. You can either receive a 100% project transfer into your own Framer account immediately after your one time payment, or choose our Managed Care Plan where we handle hosting and updates for you (with a guaranteed free ownership transfer whenever you wish after the initial six month term).</p>
+      </details>
+    </div>
+  </section>
+
+  <div style="border-top:1px solid var(--line);">
+    <footer>
+      <div>&copy; 2026 Croft Web Studio (Dominik Gross) &middot; Strictly Commercial B2B Services</div>
+      <div class="foot-links">
+        <button type="button" onclick="openLegal('imprint')">Legal Notice (Impressum)</button>
+        <button type="button" onclick="openLegal('privacy')">Privacy &amp; B2B Terms</button>
+        <a href="mailto:dominik@croftwebstudio.com">dominik@croftwebstudio.com</a>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- LEGAL & PRIVACY MODAL -->
+<div class="modal-backdrop" id="legalModal" onclick="if(event.target===this)closeLegal()">
+  <div class="modal-sheet">
+    <button type="button" class="modal-close" onclick="closeLegal()">CLOSE [ESC]</button>
+    <h2>Legal Notice (Impressum), Privacy &amp; B2B Scope</h2>
+    <p>Strictly commercial B2B web design and notification services for business clients (&sect; 14 German Civil Code &mdash; BGB). No consumer contracts (&sect; 13 BGB).</p>
+
+    <h3>1. Information pursuant to &sect; 5 DDG (Impressum)</h3>
+    <p>
+      <strong>Owner &amp; Provider:</strong> Dominik Gross, trading as Croft Web Studio (Sole Proprietorship / Einzelunternehmen)<br>
+      <strong>Address:</strong> Hintergasse 11, 55592 Rehborn, Germany<br>
+      <strong>Email:</strong> <a href="mailto:dominik@croftwebstudio.com" style="color:var(--brass);">dominik@croftwebstudio.com</a><br>
+      <strong>VAT ID (&sect; 27a UStG):</strong> DE410169979<br>
+      <strong>Editorial Responsibility (&sect; 18 (2) MStV):</strong> Dominik Gross (address above)
+    </p>
+    <p><strong>B2B Dispute &amp; Scope Notice:</strong> Services are provided exclusively to commercial businesses. We do not participate in consumer arbitration proceedings (&sect; 36 VSBG). Micro-enterprise &amp; pure B2B exemption applies under &sect; 2 No. 17 BFSG.</p>
+
+    <h3>Direct Electronic Inquiry (&sect; 5 (1) No. 2 DDG)</h3>
+    <p>Compose a direct message below (typical response &lt; 60 mins during business hours, max 24h):</p>
+    <form onsubmit="sendDirectMail(event)">
+      <div class="inq-grid">
+        <input class="inq-input" type="text" id="mName" placeholder="Your Name &amp; Company *" required>
+        <input class="inq-input" type="email" id="mMail" placeholder="Your Business Email *" required>
+      </div>
+      <input class="inq-input" type="text" id="mBody" placeholder="Your message *" required style="margin-bottom:10px;">
+      <button type="submit" class="btn-ghost" style="padding:9px 16px;">Open &amp; Transmit Direct Inquiry &rarr;</button>
+    </form>
+
+    <h3>2. Privacy Policy (GDPR / UK GDPR)</h3>
+    <p><strong>Controller:</strong> Dominik Gross, Croft Web Studio, Hintergasse 11, 55592 Rehborn, Germany (dominik@croftwebstudio.com).</p>
+    <p><strong>Zero Cookies &amp; Zero External Trackers:</strong> This website sets zero tracking cookies, uses zero analytics pixels, and loads zero external fonts (system typography only).</p>
+    <p><strong>Hosting &amp; Email:</strong> Static site delivery via GitHub Pages (GitHub, Inc., EU-US Data Privacy Framework certified; transient technical server logs processed under Art. 6(1)(f) GDPR for security). Email correspondence is hosted in EU data centers via Zoho Mail EU (Art. 6(1)(b) &amp; (f) GDPR). Approved client invoicing is processed via Stripe Payments Europe, Ltd., Dublin, Ireland (Art. 6(1)(b) &amp; (c) GDPR).</p>
+    <p><strong>B2B Outreach &amp; Rights (Art. 14 &amp; 21 GDPR):</strong> When contacting commercial companies regarding bespoke website concepts, we process publicly published corporate contact details under legitimate B2B interest (Art. 6(1)(f) GDPR / UK GDPR). Simply reply "no thanks" or email dominik@croftwebstudio.com at any time to exercise rights of access, deletion, or immediate objection.</p>
+  </div>
+</div>
+
+<script>
+  // Interactive Specimen Switcher
+  var btnLegacy = document.getElementById('btnLegacy');
+  var btnCroft = document.getElementById('btnCroft');
+
+  function setSpecimen(mode) {
+    var isCroft = (mode === 'croft');
+    btnCroft.classList.toggle('active', isCroft);
+    btnLegacy.classList.toggle('active', !isCroft);
+
+    var badge = document.getElementById('dfBadge');
+    var speed = document.getElementById('mSpeed');
+    if (isCroft) {
+      badge.textContent = 'SSL + Tap-to-Call Active';
+      badge.className = 'df-status status-good';
+      document.getElementById('dfKicker').textContent = 'Verified Local Contractor \u00b7 5.0 Rated';
+      document.getElementById('dfTitle').textContent = 'Resin & Block Paved Driveways Built With a 10 Year Guarantee';
+      document.getElementById('dfSub').textContent = 'Real local project gallery, instant 30 second quote form, and sticky one tap phone header above the fold.';
+      document.getElementById('dfCta1').textContent = 'Tap to Call Now';
+      document.getElementById('dfCta1').style.opacity = '1';
+      document.getElementById('dfCta2').textContent = '30s Quote Request';
+      speed.textContent = '0.7s';
+      speed.style.color = 'var(--ok)';
+      document.getElementById('mCall').textContent = '1 Tap Top';
+      document.getElementById('mAlert').textContent = '2s Push';
+    } else {
+      badge.textContent = 'Not Mobile Optimised';
+      badge.className = 'df-status status-bad';
+      document.getElementById('dfKicker').textContent = 'Desktop Layout Pinched on Phone';
+      document.getElementById('dfTitle').textContent = 'Welcome To Our Company Website Home Page';
+      document.getElementById('dfSub').textContent = 'Tiny unclickable landline text buried in the footer, slow uncompressed photos, and no mobile quote form.';
+      document.getElementById('dfCta1').textContent = 'No Tap-to-Call';
+      document.getElementById('dfCta1').style.opacity = '0.35';
+      document.getElementById('dfCta2').textContent = 'Broken Menu';
+      speed.textContent = '5.8s';
+      speed.style.color = 'var(--warn)';
+      document.getElementById('mCall').textContent = 'Hidden';
+      document.getElementById('mAlert').textContent = 'None';
+    }
+  }
+  btnCroft.addEventListener('click', function() { setSpecimen('croft'); });
+  btnLegacy.addEventListener('click', function() { setSpecimen('legacy'); });
+
+  // 5-Country Fee Switcher
+  var FEES = {
+    UK: { s: '\u00a3350', m: '\u00a3890', c: '\u00a359', u: '+\u00a3149' },
+    US: { s: '$449', m: '$1,090', c: '$69', u: '+$179' },
+    CA: { s: 'CA$549', m: 'CA$1,290', c: 'CA$79', u: '+CA$199' },
+    AU: { s: 'A$590', m: 'A$1,390', c: 'A$89', u: '+A$229' },
+    IE: { s: '\u20ac395', m: '\u20ac990', c: '\u20ac65', u: '+\u20ac159' }
+  };
+  function applyCur(code) {
+    var f = FEES[code] || FEES.UK;
+    document.getElementById('valSingle').textContent = f.s;
+    document.getElementById('valMulti').textContent = f.m;
+    document.getElementById('valCare').textContent = f.c;
+    document.getElementById('valUpsell').textContent = f.u;
+    document.querySelectorAll('.cur-btn').forEach(function(b) {
+      b.classList.toggle('active', b.getAttribute('data-cur') === code);
+    });
+  }
+  document.querySelectorAll('.cur-btn').forEach(function(b) {
+    b.addEventListener('click', function() { applyCur(b.getAttribute('data-cur')); });
+  });
+  var tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+  applyCur(tz.indexOf('Australia') > -1 ? 'AU' : (tz.indexOf('Toronto') > -1 || tz.indexOf('Vancouver') > -1) ? 'CA' : tz.indexOf('Dublin') > -1 ? 'IE' : tz.indexOf('America') > -1 ? 'US' : 'UK');
+
+  // Copy Studio Email
+  document.getElementById('copyMailBtn').addEventListener('click', function() {
+    var self = this;
+    navigator.clipboard.writeText('dominik@croftwebstudio.com');
+    self.textContent = 'Copied: dominik@croftwebstudio.com';
+    setTimeout(function() { self.textContent = 'Copy: dominik@croftwebstudio.com'; }, 2200);
+  });
+
+  // Legal Modal
+  function openLegal() { document.getElementById('legalModal').classList.add('open'); }
+  function closeLegal() { document.getElementById('legalModal').classList.remove('open'); }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLegal(); });
+  function sendDirectMail(e) {
+    e.preventDefault();
+    var n = document.getElementById('mName').value.trim();
+    var m = document.getElementById('mMail').value.trim();
+    var b = document.getElementById('mBody').value.trim();
+    window.location.href = 'mailto:dominik@croftwebstudio.com?subject=' + encodeURIComponent('Studio Inquiry — ' + n) + '&body=' + encodeURIComponent(b + '\n\nFrom: ' + n + ' (' + m + ')');
+  }
+</script>
+</body>
+</html>
