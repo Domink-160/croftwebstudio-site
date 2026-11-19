@@ -136,19 +136,19 @@
     /* HERO */
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.06fr 0.94fr;
       border-bottom: 1px solid var(--line);
     }
-    @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 980px) { .hero-grid { grid-template-columns: 1fr; } }
 
     .hero-left {
-      padding: 62px 48px 58px;
+      padding: 60px 46px 56px;
       border-right: 1px solid var(--line);
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-    @media (max-width: 960px) {
+    @media (max-width: 980px) {
       .hero-left { border-right: none; border-bottom: 1px solid var(--line); padding: 44px 24px; }
     }
 
@@ -163,15 +163,10 @@
       align-items: center;
       gap: 9px;
     }
-    .tag-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--brass);
-      display: inline-block;
-    }
+    .tag-dot { width: 6px; height: 6px; background: var(--brass); display: inline-block; }
 
     h1 {
-      font-size: clamp(2.2rem, 4.1vw, 3.4rem);
+      font-size: clamp(2.2rem, 4vw, 3.35rem);
       font-weight: 600;
       line-height: 1.08;
       letter-spacing: -0.035em;
@@ -185,9 +180,9 @@
     }
 
     .lead-copy {
-      font-size: 1.03rem;
+      font-size: 1.02rem;
       color: var(--ink-dim);
-      max-width: 530px;
+      max-width: 520px;
       margin-bottom: 30px;
       line-height: 1.66;
     }
@@ -197,7 +192,7 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 12px;
-      margin-bottom: 34px;
+      margin-bottom: 32px;
     }
     .btn-primary {
       display: inline-flex;
@@ -237,35 +232,38 @@
       background: rgba(243, 240, 232, 0.028);
       font-size: 0.87rem;
       color: var(--ink-dim);
-      max-width: 530px;
+      max-width: 520px;
     }
     .lookup-note strong { color: var(--ink); font-weight: 600; }
 
-    /* HERO RIGHT: REALISTIC INTERACTIVE MOBILE COMPARISON */
+    /* HERO RIGHT: REAL MINIATURE WEBSITES INSIDE PHONE VIEWPORT */
     .hero-right {
-      padding: 40px 36px;
+      padding: 34px 32px;
       background:
-        radial-gradient(460px 280px at 50% 35%, rgba(200, 169, 110, 0.08), transparent 75%),
-        linear-gradient(rgba(243, 240, 232, 0.026) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(243, 240, 232, 0.026) 1px, transparent 1px),
+        radial-gradient(500px 320px at 50% 42%, rgba(200, 169, 110, 0.09), transparent 75%),
+        linear-gradient(rgba(243, 240, 232, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(243, 240, 232, 0.025) 1px, transparent 1px),
         var(--bg-elev);
       background-size: 100% 100%, 28px 28px, 28px 28px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
     }
-    @media (max-width: 960px) { .hero-right { padding: 36px 22px; } }
+    @media (max-width: 980px) { .hero-right { padding: 34px 18px; } }
 
     .comp-toolbar {
+      width: 100%;
+      max-width: 400px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 14px;
+      gap: 10px;
+      margin-bottom: 12px;
     }
     .comp-title {
       font-family: var(--mono);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       letter-spacing: 0.07em;
       text-transform: uppercase;
       color: var(--ink-dim);
@@ -273,16 +271,18 @@
     .comp-toggle {
       display: inline-flex;
       padding: 3px;
-      background: #090a0c;
+      background: #08090b;
       border: 1px solid var(--line-strong);
+      border-radius: 8px;
     }
     .comp-btn {
       background: transparent;
       border: none;
+      border-radius: 5px;
       color: var(--ink-dim);
       font-family: var(--mono);
-      font-size: 0.73rem;
-      padding: 6px 12px;
+      font-size: 0.72rem;
+      padding: 6px 11px;
       cursor: pointer;
       transition: all 0.16s ease;
     }
@@ -292,243 +292,445 @@
       font-weight: 700;
     }
     .comp-btn.active-legacy {
-      background: rgba(217, 107, 82, 0.2);
-      color: #f29b88;
+      background: #d9534f;
+      color: #fff;
       font-weight: 700;
     }
 
-    /* TACTILE PHONE BROWSER SHELL */
-    .phone-shell {
-      border: 1px solid var(--line-strong);
-      border-radius: 16px;
-      background: #0a0b0e;
+    /* PHYSICAL SMARTPHONE BEZEL */
+    .iphone-bezel {
+      width: 100%;
+      max-width: 400px;
+      background: #07080a;
+      border: 3px solid #2a2e37;
+      border-radius: 30px;
+      padding: 9px;
       box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        0 28px 55px -12px rgba(0, 0, 0, 0.75);
+        0 30px 60px -12px rgba(0, 0, 0, 0.85),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+    .iphone-screen {
+      border-radius: 21px;
       overflow: hidden;
-      transition: border-color 0.25s ease;
+      background: #ffffff;
+      height: 446px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
     }
-    .phone-shell.legacy-mode {
-      border-color: rgba(217, 107, 82, 0.42);
-    }
-    .browser-bar {
-      background: #13151a;
-      border-bottom: 1px solid var(--line);
-      padding: 10px 14px;
+    .safari-bar {
+      background: #16181d;
+      padding: 8px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
     }
-    .win-dots {
-      display: flex;
-      gap: 5px;
-    }
-    .win-dots i {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: rgba(243, 240, 232, 0.2);
-      display: block;
-    }
-    .url-pill {
+    .url-box {
       flex: 1;
-      background: #090a0d;
-      border: 1px solid var(--line);
-      border-radius: 6px;
+      background: #0b0c0f;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 7px;
       padding: 4px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       font-family: var(--mono);
-      font-size: 0.71rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: var(--ink-dim);
+      font-size: 0.68rem;
+      color: #cbd5e1;
     }
-    .ssl-tag { font-weight: 600; font-size: 0.68rem; }
-    .ssl-ok { color: var(--ok); }
-    .ssl-bad { color: var(--warn); }
+    .badge-https { color: #34d399; font-weight: 700; }
+    .badge-http { color: #f87171; font-weight: 700; }
 
-    /* MINI WEBSITE VIEWPORT */
-    .vp-body {
-      padding: 16px;
-      transition: opacity 0.15s ease;
+    /* ============================================================
+       VIEW A: REAL MODERN CROFT TRADE WEBSITE (BRIGHT & SHARP)
+       ============================================================ */
+    .site-after {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      background: #f8fafc;
+      color: #0f172a;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+      overflow: hidden;
     }
-    .vp-site-nav {
+    .sa-nav {
+      background: #ffffff;
+      padding: 9px 13px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 12px;
-      margin-bottom: 14px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
     }
-    .vp-brand {
-      font-weight: 700;
-      font-size: 0.84rem;
-      letter-spacing: -0.01em;
+    .sa-logo {
       display: flex;
       align-items: center;
       gap: 7px;
-    }
-    .vp-brand-sq {
-      width: 16px;
-      height: 16px;
-      background: var(--brass);
-      display: inline-block;
-    }
-    .vp-call-chip {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 5px 9px;
-      background: rgba(60, 163, 116, 0.16);
-      border: 1px solid rgba(60, 163, 116, 0.45);
-      color: #6ee7b7;
-    }
-    .vp-call-missing {
-      font-family: var(--mono);
-      font-size: 0.67rem;
-      color: var(--ink-faint);
+      font-weight: 800;
+      font-size: 0.78rem;
+      color: #0f172a;
       letter-spacing: -0.02em;
     }
-
-    /* VISUAL PHOTO / WORKMANSHIP SHOWCASE CARD */
-    .vp-visual {
+    .sa-logo-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      background: #0f172a;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.66rem;
+      font-weight: 900;
+    }
+    .sa-call-btn {
+      background: #16a34a;
+      color: #ffffff;
+      font-size: 0.69rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 999px;
+      box-shadow: 0 3px 10px rgba(22, 163, 74, 0.3);
+    }
+    .sa-hero {
       position: relative;
-      height: 118px;
-      border: 1px solid var(--line);
-      margin-bottom: 14px;
-      overflow: hidden;
-      background:
-        linear-gradient(135deg, rgba(18, 21, 27, 0.25) 0%, rgba(12, 13, 15, 0.88) 100%),
-        repeating-linear-gradient(45deg, #1b1f27 0px, #1b1f27 14px, #15181f 14px, #15181f 28px);
+      height: 186px;
+      color: #fff;
+      padding: 13px 14px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 11px 13px;
+      overflow: hidden;
+      background: #1e293b;
     }
-    .vp-visual.legacy-vis {
-      background: #181818;
-      border-style: dashed;
-      border-color: rgba(217, 107, 82, 0.4);
+    .sa-hero svg.hero-art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .sa-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15,23,42,0.38) 0%, rgba(15,23,42,0.86) 100%);
+      z-index: 1;
+    }
+    .sa-hero-top, .sa-hero-bot { position: relative; z-index: 2; }
+    .sa-google-pill {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    .vp-rating-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-    }
-    .vp-stars {
-      background: rgba(12, 13, 15, 0.86);
-      border: 1px solid var(--line-strong);
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.95);
+      color: #0f172a;
       padding: 3px 8px;
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      color: var(--brass);
-    }
-    .vp-area-pill {
-      background: rgba(12, 13, 15, 0.86);
-      border: 1px solid var(--line);
-      padding: 3px 8px;
-      font-family: var(--mono);
-      font-size: 0.66rem;
-      color: var(--ink-dim);
-    }
-    .vp-photo-cap {
-      font-size: 0.75rem;
-      color: #e5e2d9;
-      font-weight: 500;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .vp-broken-txt {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: #d96b52;
-    }
-
-    .vp-headline {
-      font-size: 1.02rem;
-      font-weight: 650;
-      line-height: 1.26;
-      margin-bottom: 6px;
-      letter-spacing: -0.015em;
-    }
-    .vp-copy {
-      font-size: 0.79rem;
-      color: var(--ink-dim);
-      margin-bottom: 13px;
-      line-height: 1.5;
-    }
-    .vp-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-    .vp-btn-main {
-      text-align: center;
-      padding: 9px 10px;
-      background: var(--brass);
-      color: #0c0d0f;
+      border-radius: 999px;
+      font-size: 0.65rem;
       font-weight: 700;
-      font-size: 0.76rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
     }
-    .vp-btn-sec {
-      text-align: center;
-      padding: 9px 10px;
-      border: 1px solid var(--line-strong);
-      background: #121419;
-      color: var(--ink);
-      font-size: 0.76rem;
-      font-weight: 500;
+    .sa-stars { color: #f59e0b; letter-spacing: -1px; }
+    .sa-h1 {
+      font-size: 0.98rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
-    .vp-actions.legacy-act .vp-btn-main {
-      background: #232326;
-      color: #78756e;
-      font-weight: 500;
+    .sa-sub {
+      font-size: 0.69rem;
+      color: #e2e8f0;
+      margin-bottom: 9px;
     }
-    .vp-actions.legacy-act .vp-btn-sec {
-      border-color: rgba(217, 107, 82, 0.35);
-      color: #d96b52;
+    .sa-cta-row {
+      display: flex;
+      gap: 7px;
     }
-
-    .vp-kpis {
+    .sa-btn-amber {
+      background: #f59e0b;
+      color: #0f172a;
+      font-weight: 800;
+      font-size: 0.7rem;
+      padding: 6px 11px;
+      border-radius: 6px;
+    }
+    .sa-btn-glass {
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.35);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.7rem;
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+    .sa-section {
+      padding: 11px 13px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sa-sec-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 7px;
+    }
+    .sa-sec-head span:last-child {
+      color: #2563eb;
+      font-weight: 700;
+      font-size: 0.66rem;
+    }
+    .sa-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 7px;
-      border-top: 1px solid var(--line);
-      padding-top: 12px;
+      margin-bottom: 10px;
     }
-    .vp-kpi {
-      background: #101217;
-      border: 1px solid var(--line);
+    .sa-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 7px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(15,23,42,0.04);
+    }
+    .sa-thumb {
+      height: 46px;
+      position: relative;
+    }
+    .thumb-1 { background: linear-gradient(135deg, #c2a878 0%, #8c734b 100%); }
+    .thumb-2 { background: repeating-linear-gradient(45deg, #64748b 0 6px, #475569 6px 12px); }
+    .thumb-3 { background: linear-gradient(135deg, #94a3b8 0%, #475569 100%); }
+    .sa-thumb::after {
+      content: "DONE";
+      position: absolute;
+      bottom: 3px;
+      right: 3px;
+      background: rgba(15,23,42,0.8);
+      color: #fff;
+      font-size: 0.52rem;
+      font-weight: 700;
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+    .sa-card-lbl {
+      padding: 5px 6px;
+      font-size: 0.64rem;
+      font-weight: 700;
+      color: #1e293b;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .sa-quote-bar {
+      background: #0f172a;
+      color: #fff;
+      border-radius: 8px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .sa-q-left {
+      font-size: 0.67rem;
+      line-height: 1.25;
+    }
+    .sa-q-left strong { display: block; color: #f8fafc; font-size: 0.71rem; }
+    .sa-q-left span { color: #94a3b8; font-size: 0.62rem; }
+    .sa-q-btn {
+      background: #2563eb;
+      color: #fff;
+      font-size: 0.66rem;
+      font-weight: 700;
+      padding: 6px 9px;
+      border-radius: 5px;
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       VIEW B: REAL UGLY 2010 LEGACY TRADESMAN WEBSITE
+       ============================================================ */
+    .site-before {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+      background: #d9e2ec;
+      color: #111111;
+      font-family: "Times New Roman", Times, serif;
+      position: relative;
+      overflow: hidden;
+    }
+    .sb-top-banner {
+      background: linear-gradient(180deg, #003399 0%, #001a66 100%);
+      color: #ffff00;
+      padding: 8px 10px;
+      border-bottom: 3px solid #cc0000;
+      text-align: center;
+    }
+    .sb-top-banner h4 {
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 0 #000;
+    }
+    .sb-top-banner div {
+      font-family: Arial, sans-serif;
+      font-size: 0.6rem;
+      color: #ffffff;
+      margin-top: 2px;
+    }
+    .sb-squeezed-nav {
+      background: #cccccc;
+      border-bottom: 1px solid #888;
+      padding: 3px 5px;
+      font-family: Arial, sans-serif;
+      font-size: 0.52rem;
+      color: #0000ee;
+      text-decoration: underline;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .sb-table-layout {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      flex: 1;
+      background: #ffffff;
+    }
+    .sb-sidebar {
+      background: #eeeeee;
+      border-right: 1px solid #999999;
+      padding: 7px 6px;
+      font-family: Arial, sans-serif;
+      font-size: 0.56rem;
+      line-height: 1.55;
+      color: #333;
+    }
+    .sb-sidebar b {
+      display: block;
+      background: #003399;
+      color: #fff;
+      padding: 2px 4px;
+      margin-bottom: 4px;
+      font-size: 0.54rem;
+    }
+    .sb-main {
       padding: 8px 9px;
     }
-    .vp-kpi span {
+    .sb-broken-slider {
+      height: 78px;
+      background: #f2f2f2;
+      border: 2px inset #cccccc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 7px;
+      text-align: center;
+      padding: 6px;
+    }
+    .sb-broken-icon {
+      width: 20px;
+      height: 20px;
+      border: 1px solid #999;
+      background: #fff;
+      color: #cc0000;
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      line-height: 18px;
+      margin-bottom: 3px;
+    }
+    .sb-broken-slider span {
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 0.55rem;
+      color: #666;
+    }
+    .sb-welcome {
+      font-size: 0.82rem;
+      color: #003399;
+      text-decoration: underline;
+      margin-bottom: 4px;
+    }
+    .sb-wall {
+      font-family: Arial, sans-serif;
+      font-size: 0.54rem;
+      line-height: 1.35;
+      color: #222;
+      margin-bottom: 7px;
+    }
+    .sb-bad-form {
+      border: 1px solid #999;
+      background: #f7f7f7;
+      padding: 5px;
+      font-family: Arial, sans-serif;
+      font-size: 0.53rem;
+    }
+    .sb-fake-input {
+      border: 1px inset #bbb;
+      background: #fff;
+      height: 14px;
+      margin: 2px 0 4px;
+    }
+    .sb-cookie-wall {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(35, 35, 35, 0.95);
+      color: #ddd;
+      font-family: Arial, sans-serif;
+      font-size: 0.56rem;
+      padding: 8px 10px;
+      border-top: 2px solid #cc0000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .sb-cookie-wall span { line-height: 1.3; }
+    .sb-cookie-btn {
+      background: #666;
+      color: #fff;
+      padding: 3px 6px;
+      font-size: 0.52rem;
+      flex-shrink: 0;
+    }
+
+    /* COMP METRICS BELOW PHONE */
+    .comp-stats {
+      width: 100%;
+      max-width: 400px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .cs-box {
+      background: #0b0d10;
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      text-align: center;
+    }
+    .cs-box span {
       display: block;
       font-family: var(--mono);
-      font-size: 0.64rem;
+      font-size: 0.62rem;
       text-transform: uppercase;
       color: var(--ink-faint);
       margin-bottom: 2px;
     }
-    .vp-kpi strong {
+    .cs-box strong {
       font-family: var(--mono);
-      font-size: 0.78rem;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .comp-foot {
-      margin-top: 12px;
-      display: flex;
-      justify-content: space-between;
-      font-family: var(--mono);
-      font-size: 0.71rem;
-      color: var(--ink-faint);
+      font-size: 0.76rem;
     }
 
     /* 4 PILLARS */
@@ -552,23 +754,9 @@
       .strip-cell { border-right: none !important; border-bottom: 1px solid var(--line); }
       .strip-cell:last-child { border-bottom: none; }
     }
-    .strip-num {
-      font-family: var(--mono);
-      font-size: 0.74rem;
-      color: var(--brass);
-      margin-bottom: 10px;
-    }
-    .strip-cell h3 {
-      font-size: 0.98rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-      letter-spacing: -0.01em;
-    }
-    .strip-cell p {
-      font-size: 0.86rem;
-      color: var(--ink-dim);
-      line-height: 1.55;
-    }
+    .strip-num { font-family: var(--mono); font-size: 0.74rem; color: var(--brass); margin-bottom: 10px; }
+    .strip-cell h3 { font-size: 0.98rem; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.01em; }
+    .strip-cell p { font-size: 0.86rem; color: var(--ink-dim); line-height: 1.55; }
 
     /* SECTIONS */
     .sec-block {
@@ -592,17 +780,8 @@
       line-height: 1.15;
       max-width: 560px;
     }
-    .sec-head h2 em {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-style: italic;
-      color: #dfd7c5;
-    }
-    .sec-head p {
-      color: var(--ink-dim);
-      max-width: 400px;
-      font-size: 0.93rem;
-    }
+    .sec-head h2 em { font-family: var(--serif); font-weight: 400; font-style: italic; color: #dfd7c5; }
+    .sec-head p { color: var(--ink-dim); max-width: 400px; font-size: 0.93rem; }
 
     /* PROCESS */
     .process-rows { border-top: 1px solid var(--line); }
@@ -614,9 +793,7 @@
       border-bottom: 1px solid var(--line);
       align-items: baseline;
     }
-    @media (max-width: 760px) {
-      .proc-row { grid-template-columns: 1fr; gap: 8px; padding: 22px 0; }
-    }
+    @media (max-width: 760px) { .proc-row { grid-template-columns: 1fr; gap: 8px; padding: 22px 0; } }
     .proc-idx { font-family: var(--mono); font-size: 0.82rem; color: var(--brass); }
     .proc-title { font-size: 1.12rem; font-weight: 600; letter-spacing: -0.015em; }
     .proc-desc { font-size: 0.93rem; color: var(--ink-dim); }
@@ -666,11 +843,7 @@
       transition: 0.15s;
     }
     .cur-btn:last-child { border-right: none; }
-    .cur-btn.active {
-      background: var(--ink);
-      color: var(--bg);
-      font-weight: 600;
-    }
+    .cur-btn.active { background: var(--ink); color: var(--bg); font-weight: 600; }
 
     .price-grid {
       display: grid;
@@ -751,18 +924,11 @@
       font-family: var(--mono);
       color: var(--brass);
     }
-    .upsell-inline {
-      color: var(--ink);
-      font-weight: 600;
-      white-space: nowrap;
-    }
+    .upsell-inline { color: var(--ink); font-weight: 600; white-space: nowrap; }
 
     /* FAQ */
     .faq-list { border-top: 1px solid var(--line); }
-    details.faq-item {
-      border-bottom: 1px solid var(--line);
-      padding: 20px 0;
-    }
+    details.faq-item { border-bottom: 1px solid var(--line); padding: 20px 0; }
     details.faq-item summary {
       list-style: none;
       cursor: pointer;
@@ -774,19 +940,9 @@
       gap: 16px;
     }
     details.faq-item summary::-webkit-details-marker { display: none; }
-    details.faq-item summary::after {
-      content: "+";
-      font-family: var(--mono);
-      font-size: 1.1rem;
-      color: var(--brass);
-    }
+    details.faq-item summary::after { content: "+"; font-family: var(--mono); font-size: 1.1rem; color: var(--brass); }
     details[open].faq-item summary::after { content: "\00d7"; }
-    details.faq-item p {
-      margin-top: 12px;
-      color: var(--ink-dim);
-      font-size: 0.92rem;
-      max-width: 760px;
-    }
+    details.faq-item p { margin-top: 12px; color: var(--ink-dim); font-size: 0.92rem; max-width: 760px; }
 
     /* FOOTER */
     footer {
@@ -800,11 +956,7 @@
       color: var(--ink-faint);
     }
     @media (max-width: 760px) { footer { padding: 32px 24px; } }
-    .foot-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
+    .foot-links { display: flex; flex-wrap: wrap; gap: 20px; }
     .foot-links button, .foot-links a {
       background: none;
       border: none;
@@ -851,11 +1003,7 @@
       gap: 12px;
       flex-shrink: 0;
     }
-    .modal-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .modal-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
     .modal-tab {
       background: transparent;
       border: 1px solid var(--line);
@@ -881,10 +1029,7 @@
       cursor: pointer;
     }
     .modal-close:hover { border-color: var(--brass); }
-    .modal-body {
-      padding: 30px 32px 36px;
-      overflow-y: auto;
-    }
+    .modal-body { padding: 30px 32px 36px; overflow-y: auto; }
     @media (max-width: 600px) {
       .modal-head { padding: 14px 18px; }
       .modal-body { padding: 22px 18px 28px; }
@@ -902,12 +1047,7 @@
     }
     .modal-body p, .modal-body li { font-size: 0.88rem; color: var(--ink-dim); margin-bottom: 9px; }
     .modal-body ul { padding-left: 18px; margin-bottom: 12px; }
-    .inq-box {
-      background: var(--bg);
-      border: 1px solid var(--line);
-      padding: 16px;
-      margin: 14px 0 6px;
-    }
+    .inq-box { background: var(--bg); border: 1px solid var(--line); padding: 16px; margin: 14px 0 6px; }
     .inq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
     @media (max-width: 600px) { .inq-grid { grid-template-columns: 1fr; } }
     .inq-input {
@@ -919,12 +1059,7 @@
       font: inherit;
       font-size: 0.88rem;
     }
-    .inq-status {
-      display: none;
-      margin-top: 10px;
-      font-size: 0.85rem;
-      color: var(--ok);
-    }
+    .inq-status { display: none; margin-top: 10px; font-size: 0.85rem; color: var(--ok); }
   </style>
 </head>
 <body>
@@ -969,70 +1104,174 @@
       </div>
     </div>
 
-    <!-- INTERACTIVE MOBILE BROWSER COMPARISON -->
+    <!-- REAL MINIATURE WEBSITE COMPARISON -->
     <div class="hero-right">
       <div class="comp-toolbar">
-        <span class="comp-title">Live Mobile Comparison</span>
+        <span class="comp-title">Tap to Switch View:</span>
         <div class="comp-toggle">
-          <button type="button" class="comp-btn" id="btnLegacy">Before: Legacy Site</button>
-          <button type="button" class="comp-btn active-croft" id="btnCroft">After: Croft Build</button>
+          <button type="button" class="comp-btn" id="btnLegacy">Before: Old Site</button>
+          <button type="button" class="comp-btn active-croft" id="btnCroft">After: Croft Site</button>
         </div>
       </div>
 
-      <div class="phone-shell" id="phoneShell">
-        <div class="browser-bar">
-          <div class="win-dots"><i></i><i></i><i></i></div>
-          <div class="url-pill">
-            <span id="urlText">https://oakwooddriveways.co.uk</span>
-            <span class="ssl-tag ssl-ok" id="sslTag">&#10003; SSL Secure</span>
-          </div>
-        </div>
-
-        <div class="vp-body" id="vpBody">
-          <div class="vp-site-nav">
-            <div class="vp-brand" id="vpBrand"><span class="vp-brand-sq"></span> Oakwood Surfacing Ltd</div>
-            <div class="vp-call-chip" id="vpCallTop">Tap to Call: 07700 900...</div>
-          </div>
-
-          <div class="vp-visual" id="vpVisual">
-            <div class="vp-rating-row" id="vpRatingRow">
-              <span class="vp-stars">&#9733;&#9733;&#9733;&#9733;&#9733; 5.0 (48 Reviews)</span>
-              <span class="vp-area-pill">10 Yr Guarantee</span>
-            </div>
-            <div class="vp-photo-cap" id="vpPhotoCap">
-              <span>Recent Resin &amp; Block Paving Gallery</span>
-              <span style="font-family:var(--mono);font-size:0.68rem;color:var(--brass);">14 Real Jobs &rarr;</span>
+      <div class="iphone-bezel">
+        <div class="iphone-screen">
+          <!-- Browser URL Bar -->
+          <div class="safari-bar">
+            <div class="url-box">
+              <span id="urlText">oakwooddriveways.co.uk</span>
+              <span class="badge-https" id="sslBadge">&#128274; HTTPS</span>
             </div>
           </div>
 
-          <div class="vp-headline" id="vpHead">Bespoke Resin &amp; Block Paved Driveways Built Properly</div>
-          <div class="vp-copy" id="vpCopy">Fully insured local team with real project photos, clear service areas, and a 30 second mobile quote request.</div>
+          <!-- REAL MODERN CROFT WEBSITE -->
+          <div class="site-after" id="viewAfter">
+            <div class="sa-nav">
+              <div class="sa-logo"><span class="sa-logo-icon">O</span> Oakwood Surfacing</div>
+              <div class="sa-call-btn">&#9742; 07700 900412</div>
+            </div>
 
-          <div class="vp-actions" id="vpActions">
-            <div class="vp-btn-main" id="vpBtn1">Call Team Now</div>
-            <div class="vp-btn-sec" id="vpBtn2">Get Free Quote (30s)</div>
+            <div class="sa-hero">
+              <!-- Architectural House + Resin Driveway Illustration -->
+              <svg class="hero-art" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#1e3a5f"/>
+                    <stop offset="100%" stop-color="#334155"/>
+                  </linearGradient>
+                  <linearGradient id="drive" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#b89f7a"/>
+                    <stop offset="100%" stop-color="#856d4b"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="200" fill="url(#sky)"/>
+                <!-- Modern British Detached House -->
+                <polygon points="110,42 290,42 315,78 85,78" fill="#1e293b"/>
+                <rect x="100" y="78" width="200" height="58" fill="#e2e8f0"/>
+                <rect x="182" y="92" width="36" height="44" fill="#0f172a"/>
+                <!-- Warm Lit Windows -->
+                <rect x="118" y="88" width="42" height="26" fill="#fbbf24" opacity="0.88"/>
+                <rect x="240" y="88" width="42" height="26" fill="#fbbf24" opacity="0.88"/>
+                <!-- Hedges -->
+                <rect x="0" y="122" width="102" height="20" fill="#14532d"/>
+                <rect x="298" y="122" width="102" height="20" fill="#14532d"/>
+                <!-- Fresh Resin Bound Driveway -->
+                <polygon points="135,136 265,136 385,200 15,200" fill="url(#drive)"/>
+                <line x1="135" y1="136" x2="15" y2="200" stroke="#e2e8f0" stroke-width="3"/>
+                <line x1="265" y1="136" x2="385" y2="200" stroke="#e2e8f0" stroke-width="3"/>
+              </svg>
+              <div class="sa-hero-overlay"></div>
+
+              <div class="sa-hero-top">
+                <span class="sa-google-pill"><span class="sa-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 Google (48 Reviews)</span>
+              </div>
+
+              <div class="sa-hero-bot">
+                <div class="sa-h1">Resin &amp; Block Paved Driveways Built With a 10 Year Guarantee</div>
+                <div class="sa-sub">Fully insured family team &middot; Free site survey &amp; fixed written quote</div>
+                <div class="sa-cta-row">
+                  <div class="sa-btn-amber">Get Free Quote &rarr;</div>
+                  <div class="sa-btn-glass">View 24 Recent Jobs</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sa-section">
+              <div>
+                <div class="sa-sec-head">
+                  <span>Recent Local Installations</span>
+                  <span>All Galleries &rarr;</span>
+                </div>
+                <div class="sa-cards">
+                  <div class="sa-card">
+                    <div class="sa-thumb thumb-1"></div>
+                    <div class="sa-card-lbl">Resin Driveways</div>
+                  </div>
+                  <div class="sa-card">
+                    <div class="sa-thumb thumb-2"></div>
+                    <div class="sa-card-lbl">Block Paving</div>
+                  </div>
+                  <div class="sa-card">
+                    <div class="sa-thumb thumb-3"></div>
+                    <div class="sa-card-lbl">Natural Patios</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sa-quote-bar">
+                <div class="sa-q-left">
+                  <strong>Instant 30s Callback Request</strong>
+                  <span>Pushed to owner's mobile in 2 seconds</span>
+                </div>
+                <div class="sa-q-btn">Send Postcode &rarr;</div>
+              </div>
+            </div>
           </div>
 
-          <div class="vp-kpis">
-            <div class="vp-kpi">
-              <span>Mobile Load</span>
-              <strong id="kpiSpeed" style="color:var(--ok);">0.7s Fast</strong>
+          <!-- REAL UGLY 2010 LEGACY WEBSITE -->
+          <div class="site-before" id="viewBefore">
+            <div class="sb-top-banner">
+              <h4>OAKWOOD DRIVEWAYS &amp; PATIOS</h4>
+              <div>Tel: 01332 482910 (Office Hours) | Fax: 01332 482911 | Est. 2009</div>
             </div>
-            <div class="vp-kpi">
-              <span>Phone CTA</span>
-              <strong id="kpiCall">Sticky Top</strong>
+            <div class="sb-squeezed-nav">
+              HOME | ABOUT US | BLOCK PAVING | TARMAC | GRAVEL | PATIOS | GALLERY PAGE 1 | TESTIMONIALS | LINKS | CONTACT US
             </div>
-            <div class="vp-kpi">
-              <span>Owner Alert</span>
-              <strong id="kpiAlert">2s Mobile Push</strong>
+
+            <div class="sb-table-layout">
+              <div class="sb-sidebar">
+                <b>SITE MENU</b>
+                &raquo; Home Page<br>
+                &raquo; Driveways<br>
+                &raquo; Slabbing<br>
+                &raquo; Fencing<br>
+                &raquo; Turfing<br>
+                &raquo; Drainage<br><br>
+                <b>VISITOR #</b>
+                <span style="font-family:monospace;background:#000;color:#0f0;padding:1px 4px;">004182</span>
+              </div>
+
+              <div class="sb-main">
+                <div class="sb-broken-slider">
+                  <div class="sb-broken-icon">X</div>
+                  <span>slideshow_banner_01.swf (Flash plugin not supported on mobile)</span>
+                </div>
+
+                <div class="sb-welcome">Welcome To Our Company Website!</div>
+                <div class="sb-wall">
+                  Welcome to the official website of Oakwood Driveways. Please use your fingers to zoom in and browse our desktop menu on the left. For enquiries please write down our landline number above and call during office hours or email us from your PC...
+                </div>
+
+                <div class="sb-bad-form">
+                  <b>Desktop Contact Form ( Captcha Error ):</b>
+                  <div class="sb-fake-input"></div>
+                  <div class="sb-fake-input"></div>
+                  <span style="color:#cc0000;">Error: Invalid reCAPTCHA v1 key. Form disabled.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sb-cookie-wall">
+              <span>This site uses cookies (2014 EU Directive). Pinch screen to read policy before continuing.</span>
+              <div class="sb-cookie-btn">Close [x]</div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="comp-foot">
-        <span>TAP ABOVE TO COMPARE</span>
-        <span>ZERO CALLS &middot; ZERO UPFRONT</span>
+      <div class="comp-stats">
+        <div class="cs-box">
+          <span>Mobile Load</span>
+          <strong id="stLoad" style="color:var(--ok);">0.7s Fast</strong>
+        </div>
+        <div class="cs-box">
+          <span>Call Button</span>
+          <strong id="stCall">1-Tap Sticky</strong>
+        </div>
+        <div class="cs-box">
+          <span>Lead Alert</span>
+          <strong id="stAlert">2s Mobile Push</strong>
+        </div>
       </div>
     </div>
   </section>
@@ -1211,7 +1450,7 @@
       <div>&copy; 2026 Croft Web Studio (Dominik Gross) &middot; Strictly Commercial B2B Services</div>
       <div class="foot-links">
         <button type="button" onclick="openLegal('imprint')">Legal Notice (Impressum)</button>
-        <button type="button" onclick="openLegal('privacy')">PrivacyPolicy</button>
+        <button type="button" onclick="openLegal('privacy')">Privacy Policy</button>
         <button type="button" onclick="openLegal('terms')">B2B Terms</button>
         <a href="mailto:dominik@croftwebstudio.com">dominik@croftwebstudio.com</a>
       </div>
@@ -1290,79 +1529,38 @@
 </div>
 
 <script>
-  // Fix minor spacing in footer button label
-  document.querySelectorAll('.foot-links button')[1].textContent = 'Privacy Policy';
-
-  // Interactive Realistic Mobile Browser Switcher
+  // Real Website Switcher (Legacy 2010 HTML vs. Modern Croft Build)
   var btnLegacy = document.getElementById('btnLegacy');
   var btnCroft = document.getElementById('btnCroft');
-  var phoneShell = document.getElementById('phoneShell');
+  var viewAfter = document.getElementById('viewAfter');
+  var viewBefore = document.getElementById('viewBefore');
 
   function setComparison(mode) {
     var isCroft = (mode === 'croft');
     btnCroft.className = isCroft ? 'comp-btn active-croft' : 'comp-btn';
     btnLegacy.className = !isCroft ? 'comp-btn active-legacy' : 'comp-btn';
-    phoneShell.classList.toggle('legacy-mode', !isCroft);
 
-    var ssl = document.getElementById('sslTag');
-    var visual = document.getElementById('vpVisual');
-    var actions = document.getElementById('vpActions');
-    var speed = document.getElementById('kpiSpeed');
+    viewAfter.style.display = isCroft ? 'flex' : 'none';
+    viewBefore.style.display = isCroft ? 'none' : 'flex';
 
+    var ssl = document.getElementById('sslBadge');
+    var stLoad = document.getElementById('stLoad');
     if (isCroft) {
-      document.getElementById('urlText').textContent = 'https://oakwooddriveways.co.uk';
-      ssl.innerHTML = '&#10003; SSL Secure';
-      ssl.className = 'ssl-tag ssl-ok';
-      document.getElementById('vpBrand').innerHTML = '<span class="vp-brand-sq"></span> Oakwood Surfacing Ltd';
-      var callTop = document.getElementById('vpCallTop');
-      callTop.className = 'vp-call-chip';
-      callTop.textContent = 'Tap to Call: 07700 900...';
-
-      visual.className = 'vp-visual';
-      visual.innerHTML =
-        '<div class="vp-rating-row">' +
-          '<span class="vp-stars">&#9733;&#9733;&#9733;&#9733;&#9733; 5.0 (48 Reviews)</span>' +
-          '<span class="vp-area-pill">10 Yr Guarantee</span>' +
-        '</div>' +
-        '<div class="vp-photo-cap">' +
-          '<span>Recent Resin &amp; Block Paving Gallery</span>' +
-          '<span style="font-family:var(--mono);font-size:0.68rem;color:var(--brass);">14 Real Jobs &rarr;</span>' +
-        '</div>';
-
-      document.getElementById('vpHead').textContent = 'Bespoke Resin & Block Paved Driveways Built Properly';
-      document.getElementById('vpCopy').textContent = 'Fully insured local team with real project photos, clear service areas, and a 30 second mobile quote request.';
-      actions.className = 'vp-actions';
-      document.getElementById('vpBtn1').textContent = 'Call Team Now';
-      document.getElementById('vpBtn2').textContent = 'Get Free Quote (30s)';
-
-      speed.textContent = '0.7s Fast';
-      speed.style.color = 'var(--ok)';
-      document.getElementById('kpiCall').textContent = 'Sticky Top';
-      document.getElementById('kpiAlert').textContent = '2s Mobile Push';
+      document.getElementById('urlText').textContent = 'oakwooddriveways.co.uk';
+      ssl.innerHTML = '&#128274; HTTPS';
+      ssl.className = 'badge-https';
+      stLoad.textContent = '0.7s Fast';
+      stLoad.style.color = 'var(--ok)';
+      document.getElementById('stCall').textContent = '1-Tap Sticky';
+      document.getElementById('stAlert').textContent = '2s Mobile Push';
     } else {
-      document.getElementById('urlText').textContent = 'http://oakwooddriveways.co.uk/home.html';
+      document.getElementById('urlText').textContent = 'http://oakwood-driveways.co.uk/index.htm';
       ssl.textContent = '! Not Secure';
-      ssl.className = 'ssl-tag ssl-bad';
-      document.getElementById('vpBrand').innerHTML = 'Oakwood Driveways (Est 2011)';
-      var callTopBad = document.getElementById('vpCallTop');
-      callTopBad.className = 'vp-call-missing';
-      callTopBad.textContent = 'Home | Services | Gallery | Links';
-
-      visual.className = 'vp-visual legacy-vis';
-      visual.innerHTML =
-        '<div class="vp-broken-txt">[ IMG_0492.JPG &middot; 5.4 MB Uncompressed ]</div>' +
-        '<div style="font-size:0.72rem;color:var(--ink-faint);margin-top:4px;">Desktop slideshow pinched &amp; cropped on mobile screen</div>';
-
-      document.getElementById('vpHead').textContent = 'Welcome To Our Company Website';
-      document.getElementById('vpCopy').textContent = 'Unclickable landline number buried in the footer, tiny text requiring pinch-zoom, and broken contact form.';
-      actions.className = 'vp-actions legacy-act';
-      document.getElementById('vpBtn1').textContent = 'No Tap-to-Call';
-      document.getElementById('vpBtn2').textContent = 'Form Broken on Phone';
-
-      speed.textContent = '6.1s Slow';
-      speed.style.color = 'var(--warn)';
-      document.getElementById('kpiCall').textContent = 'Buried Footer';
-      document.getElementById('kpiAlert').textContent = 'Missed Enquiries';
+      ssl.className = 'badge-http';
+      stLoad.textContent = '6.4s Slow';
+      stLoad.style.color = 'var(--warn)';
+      document.getElementById('stCall').textContent = 'Tiny Landline';
+      document.getElementById('stAlert').textContent = 'Broken Form';
     }
   }
   btnCroft.addEventListener('click', function() { setComparison('croft'); });
@@ -1372,12 +1570,10 @@
   var FEES = {
     UK: { s: '\u00a3350', m: '\u00a3890', c: '\u00a359', u: '+\u00a3149' },
     US: { s: '$449', m: '$1,090', c: '$69', u: '+$179' },
-    CA: { s: 'CA$549', m: 'CA$1,290', c: '$79', u: '+CA$199' },
+    CA: { s: 'CA$549', m: 'CA$1,290', c: 'CA$79', u: '+CA$199' },
     AU: { s: 'A$590', m: 'A$1,390', c: 'A$89', u: '+A$229' },
     IE: { s: '\u20ac395', m: '\u20ac990', c: '\u20ac65', u: '+\u20ac159' }
   };
-  FEES.CA.c = 'CA$79';
-
   function applyCur(code) {
     var f = FEES[code] || FEES.UK;
     document.getElementById('valSingle').textContent = f.s;
@@ -1402,7 +1598,7 @@
     setTimeout(function() { self.textContent = 'Copy: dominik@croftwebstudio.com'; }, 2200);
   });
 
-  // Clean Section-Targeted Legal Modal (Always resets scroll accurately!)
+  // Legal Modal Navigation
   var legalModal = document.getElementById('legalModal');
   var modalBody = document.getElementById('modalBody');
 
@@ -1428,14 +1624,10 @@
 
   function openLegal(sec) {
     legalModal.classList.add('open');
-    requestAnimationFrame(function() {
-      jumpLegal(sec || 'imprint');
-    });
+    requestAnimationFrame(function() { jumpLegal(sec || 'imprint'); });
   }
 
-  function closeLegal() {
-    legalModal.classList.remove('open');
-  }
+  function closeLegal() { legalModal.classList.remove('open'); }
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLegal(); });
 
   // Direct Electronic Form -> Live Telegram Alert via Cloudflare Worker
